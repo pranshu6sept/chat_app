@@ -29,29 +29,38 @@ API Endpoints
 Authentication:
 
 POST /api/auth/signup: Sign up a new user
+
 POST /api/auth/login: Log in an existing user
 
 Messaging:
 
 GET /api/messages/:roomId: Get all messages for a specific room
+
 POST /api/messages: Send a new message
 
 Chat Rooms:
 
 GET /api/rooms: Get a list of all chat rooms
+
 POST /api/rooms: Create a new chat room
 
 Socket.IO Events
 Connection: connect - Triggered when a client connects.
+
 Join Room: join-room - Triggered when a user joins a chat room.
+
 Leave Room: leave-room - Triggered when a user leaves a chat room.
+
 New Message: new-message - Triggered when a new message is sent to the room.
+
 Disconnect: disconnect - Triggered when a client disconnects.
 
 Styling
+
 The project uses Tailwind CSS for styling. Tailwind allows for utility-first CSS that is both flexible and easy to use within the React components.
 
 Drizzle ORM
+
 Drizzle ORM is used for interacting with the PostgreSQL database. It provides a simple and type-safe way to manage database operations in JavaScript/TypeScript.
 
 License
