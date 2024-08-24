@@ -19,10 +19,22 @@ const sql = neon(connectionString);
 
 const db = drizzle(sql);
 
-export const saveUser = asyncHandler(async(req,res) =>{
+export const saveUser = asyncHandler(async(req,res) => {
+    const { username } = req.body
 
-    const {username} = req.body
+    // Check if user already exists
+    const existingUser = await db.select()
+        .from(userTable)
+        .where(eq(userTable.username, username))
+        .limit(1);
 
+    if (existingUser.length > 0) {
+        return res.status(400).json(
+            new ApiResponse(400, null, "Username already exists")
+        )
+    }
+
+    // If user doesn't exist, proceed with insertion
     const user = await db.insert(userTable).values({ username }).returning();
 
     if (!user) {
